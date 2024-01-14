@@ -35,3 +35,19 @@ function gameStart(){
     drawFood();
     nextTick();
 };
+
+function nextTick(){
+    if(running){
+        setTimeout(() => {
+            clearBoard();
+            drawFood();
+            moveSnake();
+            drawSnake();
+            checkGameOver();
+            nextTick();
+        }, 150); //speed
+    }
+    else {
+        displayGameOver();
+    }
+};
