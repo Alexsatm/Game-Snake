@@ -36,7 +36,7 @@ function gameStart(){
     nextTick();
 };
 
-function nextTick(){
+function nextTick() {
     if(running){
         setTimeout(() => {
             clearBoard();
@@ -52,7 +52,7 @@ function nextTick(){
     }
 };
 
-function clearBoard(){ //перекраска игрового поля
+function clearBoard() { //перекраска игрового поля
     ctx.fillStyle = boardBackground;
     ctx.fillRect(0, 0, gameWidth, gameHeight);
 };
@@ -66,12 +66,12 @@ function createFood(){ //случайное место где будет поя�
     foodY = randomFood(0, gameWidth - unitSize);
 };
 
-function drawFood(){
+function drawFood() {
     ctx.fillStyle = foodColor;
     ctx.fillRect(foodX, foodY, unitSize, unitSize);
 };
 
-function moveSnake(){ //переместить змею
+function moveSnake() { //переместить змею
     const head = {x: snake[0].x + xVelocity,
                   y: snake[0].y + yVelocity};
     snake.unshift(head);
@@ -81,12 +81,12 @@ function moveSnake(){ //переместить змею
         scoreText.textContent = score;
         createFood();
     }
-    else{
+    else {
         snake.pop();
     }
 };
 
-function drawSnake(){
+function drawSnake() {
     ctx.fillStyle = snakeColor;
     ctx.strokeStyle = snakeBorder;
     snake.forEach(snakePart => {
@@ -127,8 +127,8 @@ function changeDirection(event){ //изменить направление
     }
 };
 
-function checkGameOver(){ //проверить окончание игры
-    switch(true){
+function checkGameOver() { //проверить окончание игры
+    switch(true) {
         case (snake[0].x < 0):
             running = false;
             break;
@@ -142,6 +142,7 @@ function checkGameOver(){ //проверить окончание игры
                 running = false;
                 break;
     }
+
     for(let i = 1; i < snake.length; i+=1){
         if(snake[i].x == snake[0].x && snake[i].y == snake[0].y){
             running = false;
@@ -149,7 +150,7 @@ function checkGameOver(){ //проверить окончание игры
     }
 };
 
-function displayGameOver() { //отобразить окончание игры
+function displayGameOver(){ //отобразить окончание игры
     ctx.font = "50px MV Boli";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";

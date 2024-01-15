@@ -11,7 +11,7 @@ body {
 #gameContainer {
     text-align: center;
     height: 100svh;
-    background: linear-gradient(120deg, #778034, #212454);
+    background-color: #455564;
 }
 
 #gameBoard {
