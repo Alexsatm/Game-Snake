@@ -8,11 +8,11 @@ const boardBackground = '#cacaca';
 const snakeColor = "green";
 const snakeBorder = "black";
 const foodColor = "red";
-const unitSize = 30;
-let running = false;
-let xVelocity = unitSize;
+const unitSize = 30; //размер змеи и еды
+let running = false; //запушен ли игра в данный момент
+let xVelocity = unitSize; //будем перемещаться на 30px
 let yVelocity = 0;
-let foodX;
+let foodX; //координаты игры
 let foodY;
 let score = 0;
 let snake = [ //каждый объект эта часть тела змеи
@@ -52,12 +52,12 @@ function nextTick(){
     }
 };
 
-function clearBoard(){
+function clearBoard(){ //перекраска игрового поля
     ctx.fillStyle = boardBackground;
     ctx.fillRect(0, 0, gameWidth, gameHeight);
 };
 
-function createFood(){
+function createFood(){ //случайное место где будет появ-ся еда
     function randomFood(min, max){
         const randNum = Math.round((Math.random() * (max - min) + min) / unitSize) * unitSize;
         return randNum;
@@ -71,7 +71,7 @@ function drawFood(){
     ctx.fillRect(foodX, foodY, unitSize, unitSize);
 };
 
-function moveSnake(){
+function moveSnake(){ //переместить змею
     const head = {x: snake[0].x + xVelocity,
                   y: snake[0].y + yVelocity};
     snake.unshift(head);
@@ -95,7 +95,7 @@ function drawSnake(){
     })
 };
 
-function changeDirection(event){
+function changeDirection(event){ //изменить направление
     const keyPressed = event.keyCode;
     const LEFT = 37;
     const UP = 38;
@@ -127,7 +127,7 @@ function changeDirection(event){
     }
 };
 
-function checkGameOver(){
+function checkGameOver(){ //проверить окончание игры
     switch(true){
         case (snake[0].x < 0):
             running = false;
@@ -149,7 +149,7 @@ function checkGameOver(){
     }
 };
 
-function displayGameOver(){
+function displayGameOver() { //отобразить окончание игры
     ctx.font = "50px MV Boli";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
